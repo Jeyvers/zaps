@@ -185,9 +185,25 @@ ZAPS relies on Stellar Anchors for:
 
 Contributions are welcome.
 
-- Issues 
+- **Clone the repository**
+```bash 
+git clone https://github.com/Fracverse/zaps
+```
 
+- **Navigate into the project directory**
+```bash
+cd zaps
+```
 
+- **Install dependencies**
+```bash 
+npm install
+```
+
+- **Start the development server**
+```bash 
+npm run dev
+```
 ---
 
 ## 📜 License
