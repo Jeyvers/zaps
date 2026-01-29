@@ -30,9 +30,27 @@ if (
 }
 
 const TOKENS = [
-  { id: "xlm", symbol: "XLM", balance: "100.00", value: "125.32", Icon: XLMLogo },
-  { id: "usdt", symbol: "USDT", balance: "100.00", value: "100", Icon: USDTLogo },
-  { id: "usdc", symbol: "USDC", balance: "100.00", value: "100", Icon: USDCLogo },
+  {
+    id: "xlm",
+    symbol: "XLM",
+    balance: "100.00",
+    value: "125.32",
+    Icon: XLMLogo,
+  },
+  {
+    id: "usdt",
+    symbol: "USDT",
+    balance: "100.00",
+    value: "100",
+    Icon: USDTLogo,
+  },
+  {
+    id: "usdc",
+    symbol: "USDC",
+    balance: "100.00",
+    value: "100",
+    Icon: USDCLogo,
+  },
 ];
 
 const MERCHANT_NAME = "Ebube One";
@@ -212,8 +230,6 @@ export default function TapToPayScreen() {
   const [amount, setAmount] = useState("");
   const [selectedToken, setSelectedToken] = useState(TOKENS[0].id);
 
-  const token = TOKENS.find((t) => t.id === selectedToken) || TOKENS[0];
-
   useEffect(() => {
     if (step === "terminalFound") {
       const t = setTimeout(() => {
@@ -330,7 +346,10 @@ export default function TapToPayScreen() {
               {TOKENS.map((t) => (
                 <TokenSelectCard
                   key={t.id}
-                  {...t}
+                  symbol={t.symbol}
+                  balance={t.balance}
+                  value={t.value}
+                  Icon={t.Icon}
                   selected={selectedToken === t.id}
                   onPress={() => setSelectedToken(t.id)}
                 />
@@ -345,8 +364,18 @@ export default function TapToPayScreen() {
       return (
         <View style={styles.centeredBlock}>
           <View style={styles.successOuter}>
-            <View style={[styles.successRing, { width: 180, height: 180, opacity: 0.35 }]} />
-            <View style={[styles.successRing, { width: 140, height: 140, opacity: 0.4 }]} />
+            <View
+              style={[
+                styles.successRing,
+                { width: 180, height: 180, opacity: 0.35 },
+              ]}
+            />
+            <View
+              style={[
+                styles.successRing,
+                { width: 140, height: 140, opacity: 0.4 },
+              ]}
+            />
             <View style={styles.successCheck}>
               <Ionicons name="checkmark" size={56} color={COLORS.primary} />
             </View>
@@ -445,7 +474,10 @@ export default function TapToPayScreen() {
       <View
         style={[
           styles.content,
-          (step === "success" || step === "ready" || step === "searching" || step === "terminalFound") &&
+          (step === "success" ||
+            step === "ready" ||
+            step === "searching" ||
+            step === "terminalFound") &&
             styles.contentCentered,
         ]}
       >

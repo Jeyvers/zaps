@@ -39,7 +39,12 @@ export default function ScanScreen() {
         <View style={styles.headerSpacer} />
       </View>
 
-      <View style={[styles.scannerWrapper, { paddingHorizontal: horizontalPadding }]}>
+      <View
+        style={[
+          styles.scannerWrapper,
+          { paddingHorizontal: horizontalPadding },
+        ]}
+      >
         <View
           style={[
             styles.scannerViewport,
